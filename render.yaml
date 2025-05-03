@@ -1,0 +1,12 @@
+
+services:
+  - type: web
+    name: telegram-signal-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot_server.py"
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: "вставь_сюда_токен_бота"
+      - key: CHAT_ID
+        value: "вставь_сюда_chat_id"
