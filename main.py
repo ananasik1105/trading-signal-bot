@@ -19,9 +19,11 @@ def webhook():
     if TOKEN and CHAT_ID:
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
         payload = {"chat_id": CHAT_ID, "text": message}
-        response = requests.post(url, json=payload)
-        print("Telegram response:", response.text)
-    else:
-        print("CHAT_ID or TOKEN missing")
+        requests.post(url, json=payload)
 
     return "OK"
+
+# --- ЭТО ГЛАВНОЕ: запуск с правильным портом ---
+if name == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
